@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './products.css'
 
 export const ProductList = () => {
   const [products, updateProducts] = useState([])
@@ -13,10 +14,12 @@ export const ProductList = () => {
   return (
     <>
       {products.map((productObj) => {
-        return <div key={`product--${productObj.id}`}>
+        return <div key={`product--${productObj.id}`} className="productsList">
             <h3>{productObj.productName} </h3> 
-            <p>{productObj.productType.id}) {productObj.productType.typeName}</p>
-            <p>at {productObj.price.toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+            <h5>Category</h5>
+            <p className="productListObj">{productObj.productType.id}) {productObj.productType.typeName}</p>
+            <h5>Price:</h5>
+            <p className="productListObj">{productObj.price.toLocaleString("en-US", {style:"currency", currency:"USD"})}/ea</p>
         
         </div>;
       })}
